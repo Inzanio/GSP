@@ -2,7 +2,7 @@ import streamlit as st
 from ml.companies import companies_tickers,period
 
 
-st.title("💰See :blue[Google] the actions in real times 📊")
+st.title("💰See :blue[Google] stocks actions in real times 📊")
 #col1 , col2 = st.columns(2)
 companie = "Google" #col1.selectbox("Companie",options=list(companies_tickers.keys()))
 cols = st.multiselect("Data",["Open","Close","High","Low","Volume","Dividends","Stock Splits"], default="Close")
