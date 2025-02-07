@@ -1,0 +1,5 @@
+huggingface_hub==0.26.3
+pandas==2.2.3
+streamlit==1.40.2
+transformers==4.48.1
+yfinance==0.2.52
