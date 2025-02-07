@@ -22,7 +22,7 @@ st.logo("logo.png")
 
 
 
-#home = st.Page("pages/test.py",title="Home", icon="🏠",default=True)
+#test = st.Page("pages/test.py",title="test", icon="🏠",default=True)
 actions = st.Page("pages/actions.py",title="Action Evolution", icon="📈")
 
 pages = [actions]
