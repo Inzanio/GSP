@@ -69,22 +69,23 @@ for target in targets :
         "amazon/chronos-t5-mini",
         #device_map="cuda",
         torch_dtype=torch.bfloat16,
+        
         )
     
     context = torch.tensor(df[target])
     
     prediction_length = periode_map.get(periode)
-    forecast = pipeline.predict(context, prediction_length,1)  # shape [num_series, num_samples, prediction_length]
+    forecast = pipeline.predict(context, prediction_length,1,temperature=0.3)  # shape [num_series, num_samples, prediction_length]
     forecast = forecast[0].numpy().reshape(-1)
     
-    future_df = pd.DataFrame({target: forecast , "Date" :pd.date_range(start=df.index[-1],periods=len(forecast),freq=pd.offsets.DateOffset(1))} )
+    future_df = pd.DataFrame({target: forecast , "Date" :pd.date_range(start=df.index[-1],periods=len(forecast),freq="D")} )
     if (df_predict.empty):
         df_predict = future_df
     else :
         df_predict[target] = future_df[target]
     
 
-st.write(df_predict)
+
 
 fig.add_trace(go.Candlestick(
     x=df_predict['Date'],
@@ -114,3 +115,5 @@ fig.data[0].decreasing.fillcolor = color_lo_fill
 fig.data[0].decreasing.line.color = color_lo_line
 
 st.plotly_chart(fig)
+
+st.write(df_predict)
