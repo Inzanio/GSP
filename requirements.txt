@@ -1,6 +1,7 @@
-huggingface_hub==0.26.3
+chronos==0.3
+numpy==2.2.3
 pandas==2.2.3
+plotly==6.0.0
 streamlit==1.40.2
-transformers==4.48.1
+torch==2.5.1
 yfinance==0.2.52
-plotly

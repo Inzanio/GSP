@@ -24,8 +24,8 @@ st.logo("logo.png")
 
 #test = st.Page("pages/test.py",title="test", icon="🏠",default=True)
 actions = st.Page("pages/actions.py",title="Action Evolution", icon="📈")
-
-pages = [actions]
+predictions = st.Page("pages/prediction.py",title="Predictions", icon="🔮")
+pages = [actions,predictions]
 # setting up app navigation
 app = st.navigation(pages)
 app.run()
