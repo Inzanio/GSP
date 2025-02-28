@@ -40,7 +40,7 @@ if (st.session_state["user"] == None):
         "Login" : [login,signup]
     }
 else : # un utilisateur est connecté
-    print(st.session_state["user"])
+    #print(st.session_state["user"])
     if ("role" in st.session_state["user"] and st.session_state["user"]["role"] == "ADMIN") :
       pages = {
             "GSP" : [actions,predictions],
@@ -51,6 +51,12 @@ else : # un utilisateur est connecté
             "GSP" : [actions,predictions],
             "Login" : [special_page]
         } 
+    from firebase.auth import auth
+    if st.sidebar.button("Log Out") :
+        auth.current_user = None
+        st.session_state["user"] = None
+        st.rerun()
+        
 # setting up app navigation
 app = st.navigation(pages)
 app.run()
