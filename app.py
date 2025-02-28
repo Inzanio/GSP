@@ -52,7 +52,7 @@ else : # un utilisateur est connecté
             "Login" : [special_page]
         } 
     from firebase.auth import auth
-    if st.sidebar.button("Log Out") :
+    if st.sidebar.button("🏃🏻‍♀️Log Out", type="secondary") :
         auth.current_user = None
         st.session_state["user"] = None
         st.rerun()
