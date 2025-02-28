@@ -7,4 +7,4 @@ streamlit==1.40.2
 torch==2.5.1
 yfinance==0.2.52
 huggingface_hub==0.26.3
-firebase_admin==6.6.0
+firebase_admin
