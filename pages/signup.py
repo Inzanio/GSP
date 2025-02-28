@@ -54,7 +54,9 @@ if st.button("S'inscrire", key="signup_button"):
             # Succès de l'inscription
             st.success(f"✅ Compte créé avec succès, {name} ! Vous pouvez maintenant vous connecter.")
             #st.balloons()  # Effet de ballons pour célébrer la création du compte
-            st.switch_page('pages/login.py')  # Optionnel : Recharger la page ou rediriger vers la page de connexion
+            login = st.Page("pages/login.py", title="Login", icon="🔐")
+            
+            st.switch_page(login)  # Optionnel : Recharger la page ou rediriger vers la page de connexion
 
         except Exception as e:
             error_message = str(e)

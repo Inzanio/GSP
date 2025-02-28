@@ -42,12 +42,14 @@ if st.button("Se connecter", key="login_button"):
                     
                     if ("role" in user_data and user_data["role"]=="ADMIN"):
                         st.success("✅ Connexion réussie ! Bienvenue, administrateur 👋")
-                        st.switch_page("pages/user.py")  # Redirection vers la page "user.py"
+                        users =st.Page("pages/user.py", title="Manage Users", icon="🛠️")
+                        st.switch_page(users)  # Redirection vers la page "user.py"
                     
                     else :
                         st.success(f"✅ Connexion réussie ! Bienvenue, {user_data['name']} 👋")
                         st.balloons()  # Effet de ballons pour célébrer la connexion
-                        st.write("Où vat ton ?")  # Rediriger vers la page des prédictions
+                        special_page = st.Page("pages/special_page.py", title="Special User Content", icon="🌟")
+                        st.switch_page(special_page)  # Rediriger vers la page des prédictions
             else:
                 st.error("❌ Utilisateur non trouvé.")
 

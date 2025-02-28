@@ -7,7 +7,8 @@ st.set_page_config(
        
 )
 st.logo("logo.png")
-
+if "user" not in st.session_state :
+    st.session_state["user"] = None
 
 # GROUPE 2
 # -Un modele LSTM de prediction des actions GOOGLE, TESLA, MICROSOFT et
@@ -32,13 +33,14 @@ users =st.Page("pages/user.py", title="Manage Users", icon="🛠️")
 
 special_page = st.Page("pages/special_page.py", title="Special User Content", icon="🌟")
 
-if ("user" not in st.session_state):
+if (st.session_state["user"] == None):
     # pas d'utilisateur connecté
     pages = {
         "GSP" : [actions,predictions],
         "Login" : [login,signup]
     }
 else : # un utilisateur est connecté
+    print(st.session_state["user"])
     if ("role" in st.session_state["user"] and st.session_state["user"]["role"] == "ADMIN") :
       pages = {
             "GSP" : [actions,predictions],
