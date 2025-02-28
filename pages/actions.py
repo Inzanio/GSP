@@ -21,10 +21,6 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 
-# Titre de l'application
-st.title("Graphique en Bougies (Candlestick) avec Streamlit")
-
-
 # Convertir la colonne 'Date' en type datetime
 #df['Date'] = pd.to_datetime(df['Date'])
 
