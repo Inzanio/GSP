@@ -25,7 +25,30 @@ st.logo("logo.png")
 #test = st.Page("pages/test.py",title="test", icon="🏠",default=True)
 actions = st.Page("pages/actions.py",title="Action Evolution", icon="📈")
 predictions = st.Page("pages/prediction.py",title="Predictions", icon="🔮")
-pages = [actions,predictions]
+
+login = st.Page("pages/login.py", title="Login", icon="🔐")
+signup = st.Page("pages/signup.py", title="Sign Up", icon="🔰")
+users =st.Page("pages/user.py", title="Manage Users", icon="🛠️")
+
+special_page = st.Page("pages/special_page.py", title="Special User Content", icon="🌟")
+
+if ("user" not in st.session_state):
+    # pas d'utilisateur connecté
+    pages = {
+        "GSP" : [actions,predictions],
+        "Login" : [login,signup]
+    }
+else : # un utilisateur est connecté
+    if ("role" in st.session_state["user"] and st.session_state["user"]["role"] == "ADMIN") :
+      pages = {
+            "GSP" : [actions,predictions],
+            "Login" : [users,special_page]
+        } 
+    else :
+        pages = {
+            "GSP" : [actions,predictions],
+            "Login" : [special_page]
+        } 
 # setting up app navigation
 app = st.navigation(pages)
 app.run()

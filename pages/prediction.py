@@ -78,7 +78,7 @@ for target in targets :
     forecast = pipeline.predict(context, prediction_length,1,temperature=0.3)  # shape [num_series, num_samples, prediction_length]
     forecast = forecast[0].numpy().reshape(-1)
     
-    future_df = pd.DataFrame({target: forecast , "Date" :pd.date_range(start=df.index[-1],periods=len(forecast),freq="D")} )
+    future_df = pd.DataFrame({target: forecast , "Date" :pd.date_range(start=df.index[-1],periods=len(forecast),freq=pd.offsets.DateOffset(1))} )
     if (df_predict.empty):
         df_predict = future_df
     else :
